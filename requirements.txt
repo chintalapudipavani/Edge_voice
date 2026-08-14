@@ -1,0 +1,3 @@
+# The included demo uses only the Python standard library.
+# Add real-model dependencies here only after selecting and validating
+# the actual quantized Arm64 inference stack.
