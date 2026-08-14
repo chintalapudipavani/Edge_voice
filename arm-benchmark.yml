@@ -1,0 +1,30 @@
+name: EdgeVoice Arm64 Benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  benchmark:
+    # Replace this label with the exact Arm64 runner label provided
+    # by your hackathon/GitHub environment if your account has one.
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show architecture
+        run: |
+          uname -a
+          uname -m
+          python3 --version
+
+      - name: Run application smoke test
+        run: |
+          printf "What is AI?\nexit\n" | python3 app/app.py
+
+      - name: Run benchmark
+        run: |
+          python3 benchmark/benchmark.py
